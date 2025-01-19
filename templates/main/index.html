@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Homepage!</h1>
-    <h2>Flatpages:</h2>
-    <ul>
-        {% load flatpages %}
-        {% get_flatpages as flatpages_list %}
-        {% for page in flatpages_list %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+
+{% extends 'main/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Homepage</h1>
+<ul>
+</ul>
+{% endblock %}
+
 
