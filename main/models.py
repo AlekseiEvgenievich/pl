@@ -10,16 +10,21 @@ class Seller(models.Model):  # Исправлено с model.Model на models.M
 
     @property
     def published_ads_count(self):
-        # В данном примере возвращаем фиксированное значение
-        return 42
+        return self.ad_set.count()
 
 
 class Category(models.Model):
-	name = models.SlugField(default="", null=False)
+    name = models.SlugField(default="", null=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Tag(models.Model):
-	name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 
 class Ad(models.Model):  # Исправлено с model.Model на models.Model
@@ -29,3 +34,6 @@ class Ad(models.Model):  # Исправлено с model.Model на models.Model
     tags = models.ManyToManyField(Tag)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
